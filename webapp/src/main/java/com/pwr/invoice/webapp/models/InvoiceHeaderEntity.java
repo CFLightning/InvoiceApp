@@ -3,9 +3,13 @@ package com.pwr.invoice.webapp.models;
 import javax.persistence.*;
 import java.util.List;
 
+@Entity
 public class InvoiceHeaderEntity {
 
     @Id
+    @GeneratedValue
+    private Long Id;
+    @Column
     private String invoiceNumber;
     @ManyToOne
     private CompanyEntity company;
@@ -134,5 +138,13 @@ public class InvoiceHeaderEntity {
 
     public void setRows(List<InvoiceRowEntity> rows) {
         this.rows = rows;
+    }
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
     }
 }

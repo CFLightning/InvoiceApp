@@ -1,5 +1,7 @@
 package com.pwr.invoice.webapp.models;
 
+import java.util.List;
+
 public class InvoiceHeaderTO {
 
     private String invoiceNumber;
@@ -14,6 +16,7 @@ public class InvoiceHeaderTO {
     private double bruttoTotal;
     private double VATTotal;
     private UserEntity issuer;
+    private List<InvoiceRowEntity> rows;
 
     public String getInvoiceNumber() {
         return invoiceNumber;
@@ -109,5 +112,13 @@ public class InvoiceHeaderTO {
 
     public void setIssuer(UserEntity issuer) {
         this.issuer = issuer;
+    }
+
+    public List<InvoiceRowEntity> getRows() {
+        return rows;
+    }
+
+    public void setRows(List<InvoiceRowEntity> rows) {
+        this.rows = rows;
     }
 }

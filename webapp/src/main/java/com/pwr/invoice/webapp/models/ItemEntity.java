@@ -18,6 +18,8 @@ public class ItemEntity {
     private String unit; //jednostka miary
     @ManyToOne
     private VATGroupEntity vatGroup;
+    @ManyToOne
+    private CompanyEntity company;
 
     public String getName() {
         return name;
@@ -57,6 +59,14 @@ public class ItemEntity {
 
     public void setVatGroup(VATGroupEntity vatGroup) {
         this.vatGroup = vatGroup;
+    }
+
+    public CompanyEntity getCompany() {
+        return company;
+    }
+
+    public void setCompany(CompanyEntity company) {
+        this.company = company;
     }
     //@ManyToOne
     //vat

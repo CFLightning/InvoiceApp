@@ -1,10 +1,8 @@
 package com.pwr.invoice.webapp.models;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
+@Entity
 public class InvoiceRowEntity {
 
     @Id

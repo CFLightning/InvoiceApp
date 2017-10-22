@@ -1,15 +1,13 @@
 package com.pwr.invoice.webapp.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class UserEntity {
 
     @Id
-    private Long PESEL;
+    @GeneratedValue
+    private Long Id; //swap to ID???
     @Column
     private String name;
     @Column
@@ -18,13 +16,17 @@ public class UserEntity {
     private CompanyEntity company;
     @Column
     private int accountType;
+    @Column(name = "login", nullable = false, unique = true)
+    private String login;
+    @Column
+    private String password;
 
-    public long getPESEL() {
-        return PESEL;
+    public long getId() {
+        return Id;
     }
 
-    public void setPESEL(long PESEL) {
-        this.PESEL = PESEL;
+    public void setId(long id) {
+        this.Id = id;
     }
 
     public String getName() {
@@ -57,5 +59,21 @@ public class UserEntity {
 
     public void setCompany(CompanyEntity company) {
         this.company = company;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 }

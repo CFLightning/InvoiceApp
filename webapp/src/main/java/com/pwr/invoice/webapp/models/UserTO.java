@@ -2,22 +2,15 @@ package com.pwr.invoice.webapp.models;
 
 import javax.persistence.Entity;
 
-@Entity
 public class UserTO {
 
-    private Long PESEL;
+    private Long Id;
     private String name;
     private String surname;
     private CompanyEntity company;
     private int accountType;
-
-    public Long getPESEL() {
-        return PESEL;
-    }
-
-    public void setPESEL(Long PESEL) {
-        this.PESEL = PESEL;
-    }
+    private String login;
+    private String password;
 
     public String getName() {
         return name;
@@ -49,5 +42,29 @@ public class UserTO {
 
     public void setCompany(CompanyEntity company) {
         this.company = company;
+    }
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

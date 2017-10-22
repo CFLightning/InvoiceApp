@@ -7,6 +7,7 @@ public class ItemTO {
     private  double bruttoPrice;
     private String unit; //jednostka miary
     private VATGroupEntity vatGroup;
+    private CompanyEntity company;
 
     public String getName() {
         return name;
@@ -46,5 +47,13 @@ public class ItemTO {
 
     public void setVatGroup(VATGroupEntity vatGroup) {
         this.vatGroup = vatGroup;
+    }
+
+    public CompanyEntity getCompany() {
+        return company;
+    }
+
+    public void setCompany(CompanyEntity company) {
+        this.company = company;
     }
 }
