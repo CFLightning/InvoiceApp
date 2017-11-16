@@ -1,9 +1,6 @@
 package com.pwr.invoice.webapp.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class ItemEntity {
@@ -16,9 +13,9 @@ public class ItemEntity {
     private double bruttoPrice;
     @Column
     private String unit; //jednostka miary
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private VATGroupEntity vatGroup;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private CompanyEntity company;
 
     public String getName() {
@@ -68,7 +65,5 @@ public class ItemEntity {
     public void setCompany(CompanyEntity company) {
         this.company = company;
     }
-    //@ManyToOne
-    //vat
 
 }

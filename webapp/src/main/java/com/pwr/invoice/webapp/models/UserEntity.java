@@ -5,29 +5,21 @@ import javax.persistence.*;
 @Entity
 public class UserEntity {
 
-    @Id
-    @GeneratedValue
-    private Long Id; //swap to ID???
     @Column
     private String name;
     @Column
     private String surname;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private CompanyEntity company;
     @Column
     private int accountType;
+    @Id
     @Column(name = "login", nullable = false, unique = true)
     private String login;
     @Column
     private String password;
-
-    public long getId() {
-        return Id;
-    }
-
-    public void setId(long id) {
-        this.Id = id;
-    }
+    @Column
+    private String token;
 
     public String getName() {
         return name;
@@ -75,5 +67,13 @@ public class UserEntity {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

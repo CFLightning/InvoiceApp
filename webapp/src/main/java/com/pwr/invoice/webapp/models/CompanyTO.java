@@ -4,19 +4,19 @@ package com.pwr.invoice.webapp.models;
 public class CompanyTO {
 
 
-    private Long NIP;
+    private Long nip;
     private String name;
     private String address;
     private String postalCode;
     private String city;
-    private Long bankAccount;
+    private String bankAccount;
 
-    public Long getNIP() {
-        return NIP;
+    public Long getNip() {
+        return nip;
     }
 
-    public void setNIP(Long NIP) {
-        this.NIP = NIP;
+    public void setNip(Long nip) {
+        this.nip = nip;
     }
 
     public String getName() {
@@ -51,11 +51,11 @@ public class CompanyTO {
         this.city = city;
     }
 
-    public Long getBankAccount() {
+    public String getBankAccount() {
         return bankAccount;
     }
 
-    public void setBankAccount(Long bankAccount) {
+    public void setBankAccount(String bankAccount) {
         this.bankAccount = bankAccount;
     }
 }

@@ -1,16 +1,14 @@
 package com.pwr.invoice.webapp.models;
 
-import javax.persistence.Entity;
-
 public class UserTO {
 
-    private Long Id;
     private String name;
     private String surname;
     private CompanyEntity company;
     private int accountType;
     private String login;
     private String password;
+    private String token;
 
     public String getName() {
         return name;
@@ -44,14 +42,6 @@ public class UserTO {
         this.company = company;
     }
 
-    public Long getId() {
-        return Id;
-    }
-
-    public void setId(Long id) {
-        Id = id;
-    }
-
     public String getLogin() {
         return login;
     }
@@ -66,5 +56,13 @@ public class UserTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

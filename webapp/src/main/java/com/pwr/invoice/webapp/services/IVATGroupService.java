@@ -7,6 +7,6 @@ import java.util.List;
 public interface IVATGroupService {
 
     List<VATGroupTO> findAllGroups();
-    void insertOrModifyGroup(VATGroupTO vatGroupTO);
+    VATGroupTO insertOrModifyGroup(VATGroupTO vatGroupTO);
 
 }

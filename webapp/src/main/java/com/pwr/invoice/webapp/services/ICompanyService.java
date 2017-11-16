@@ -7,5 +7,6 @@ public interface ICompanyService {
 
     CompanyTO findCompany(CompanyTO companyTO);
     void insertOrModifyCompany(CompanyTO companyTO);
+    CompanyTO checkIfCompanyExists(CompanyTO companyTO);
 
 }

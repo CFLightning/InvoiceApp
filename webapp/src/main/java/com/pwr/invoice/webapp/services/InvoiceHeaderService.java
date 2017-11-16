@@ -21,7 +21,7 @@ public class InvoiceHeaderService implements IInvoiceHeaderService {
     public List<InvoiceHeaderTO> findCompanyHeaders(CompanyTO companyTO) {
         List<InvoiceHeaderTO> invoiceHeaderTOS = new ArrayList<>();
         invoiceHeaderRepository.findAll().forEach(invoiceHeaderEntity -> invoiceHeaderTOS.add(InvoiceHeaderMapper.mapInvoiceHeaderToTO(invoiceHeaderEntity)));
-        return invoiceHeaderTOS.stream().filter(head -> head.getCompany().getNIP() == companyTO.getNIP()).collect(Collectors.toList());
+        return invoiceHeaderTOS.stream().filter(head -> companyTO.getNip().equals(head.getCompany().getNip())).collect(Collectors.toList());
     }
 
     @Override

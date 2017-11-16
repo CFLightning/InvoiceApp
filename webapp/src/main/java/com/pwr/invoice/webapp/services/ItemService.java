@@ -21,7 +21,7 @@ public class ItemService implements IItemService {
     public List<ItemTO> findCompanyItems(CompanyTO companyTO){
         List<ItemTO> itemTOS = new ArrayList<>();
         itemRepository.findAll().forEach(itemEntity -> ItemMapper.mapItemToTO(itemEntity));
-        return itemTOS.stream().filter(item -> item.getCompany().getNIP() == companyTO.getNIP()).collect(Collectors.toList());
+        return itemTOS.stream().filter(item -> item.getCompany().getNip() == companyTO.getNip()).collect(Collectors.toList());
     }
 
     @Override

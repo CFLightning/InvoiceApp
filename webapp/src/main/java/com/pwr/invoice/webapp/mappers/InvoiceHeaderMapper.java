@@ -11,6 +11,7 @@ public final class InvoiceHeaderMapper {
 
     public static InvoiceHeaderTO mapInvoiceHeaderToTO(InvoiceHeaderEntity invoiceHeaderEntity){
         InvoiceHeaderTO invoiceHeaderTO = new InvoiceHeaderTO();
+        invoiceHeaderTO.setId(invoiceHeaderEntity.getId());
         invoiceHeaderTO.setInvoiceNumber(invoiceHeaderEntity.getInvoiceNumber());
         invoiceHeaderTO.setCompany(invoiceHeaderEntity.getCompany());
         invoiceHeaderTO.setIssueDate(invoiceHeaderEntity.getIssueDate());
@@ -29,6 +30,7 @@ public final class InvoiceHeaderMapper {
 
     public static InvoiceHeaderEntity mapInvoiceHeaderToEntity(InvoiceHeaderTO invoiceHeaderTO){
         InvoiceHeaderEntity invoiceHeaderEntity = new InvoiceHeaderEntity();
+        invoiceHeaderEntity.setId(invoiceHeaderTO.getId());
         invoiceHeaderEntity.setInvoiceNumber(invoiceHeaderTO.getInvoiceNumber());
         invoiceHeaderEntity.setCompany(invoiceHeaderTO.getCompany());
         invoiceHeaderEntity.setIssueDate(invoiceHeaderTO.getIssueDate());

@@ -3,14 +3,12 @@ package com.pwr.invoice.webapp.controllers;
 import com.pwr.invoice.webapp.models.CompanyTO;
 import com.pwr.invoice.webapp.services.ICompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 
 @RestController
-//@CrossOrigin - moze sie przydac potem
+@CrossOrigin
 @RequestMapping(path = "services/company")
 @Transactional
 public class CompanyController {
@@ -19,12 +17,17 @@ public class CompanyController {
     private ICompanyService companyService;
 
     @RequestMapping(path = "find", method = RequestMethod.POST)
-    public CompanyTO findCompany(CompanyTO companyTO){
+    public CompanyTO findCompany(@RequestBody CompanyTO companyTO){
         return companyService.findCompany(companyTO);
     }
 
     @RequestMapping(path = "create", method = RequestMethod.POST)
-    public void insertOrModifyCompany(CompanyTO companyTO) {
+    public void insertOrModifyCompany(@RequestBody CompanyTO companyTO) {
         companyService.insertOrModifyCompany(companyTO);
+    }
+
+    @RequestMapping(path = "exists", method = RequestMethod.POST)
+    public CompanyTO checkIfCompanyExists(@RequestBody CompanyTO companyTO){
+        return companyService.checkIfCompanyExists(companyTO);
     }
 }

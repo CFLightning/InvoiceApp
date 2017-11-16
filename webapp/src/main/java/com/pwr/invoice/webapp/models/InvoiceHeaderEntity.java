@@ -1,17 +1,21 @@
 package com.pwr.invoice.webapp.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class InvoiceHeaderEntity {
 
     @Id
-    @GeneratedValue
     private Long Id;
     @Column
     private String invoiceNumber;
-    @ManyToOne
+    @ManyToOne//(cascade = CascadeType.ALL)
     private CompanyEntity company;
     @Column
     private String issueDate;
@@ -31,10 +35,10 @@ public class InvoiceHeaderEntity {
     private double bruttoTotal;
     @Column
     private double VATTotal;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private UserEntity issuer;
-    @OneToMany
-    private List<InvoiceRowEntity> rows;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<InvoiceRowEntity> rows = new ArrayList<>();
 
     public String getInvoiceNumber() {
         return invoiceNumber;
@@ -51,7 +55,7 @@ public class InvoiceHeaderEntity {
     public void setIssueDate(String issueDate) {
         this.issueDate = issueDate;
     }
-
+    @JsonManagedReference
     public CompanyEntity getCompany() {
         return company;
     }

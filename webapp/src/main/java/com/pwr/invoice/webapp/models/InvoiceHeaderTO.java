@@ -4,6 +4,7 @@ import java.util.List;
 
 public class InvoiceHeaderTO {
 
+    private Long Id;
     private String invoiceNumber;
     private CompanyEntity company;
     private String issueDate;
@@ -120,5 +121,13 @@ public class InvoiceHeaderTO {
 
     public void setRows(List<InvoiceRowEntity> rows) {
         this.rows = rows;
+    }
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
     }
 }

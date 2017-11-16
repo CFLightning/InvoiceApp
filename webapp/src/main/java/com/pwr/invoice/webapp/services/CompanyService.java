@@ -15,12 +15,33 @@ public class CompanyService implements ICompanyService {
 
     @Override
     public CompanyTO findCompany(CompanyTO companyTO) {
-        CompanyEntity companyEntity = companyRepository.findOne(companyTO.getNIP());
-        return CompanyMapper.mapCompanyToTO(companyEntity);
+        CompanyEntity companyEntity = companyRepository.findOne(companyTO.getNip());
+        if(companyEntity != null && companyEntity.getNip().equals(companyTO.getNip())){
+            return CompanyMapper.mapCompanyToTO(companyEntity);
+        }
+        else
+        {
+            return null;
+        }
     }
 
     @Override
     public void insertOrModifyCompany(CompanyTO companyTO) {
-        companyRepository.save(CompanyMapper.mapCompanyToEntity(companyTO));
+        CompanyEntity companyEntity = CompanyMapper.mapCompanyToEntity(companyTO);
+        companyRepository.save(companyEntity);
+    }
+
+    @Override
+    public CompanyTO checkIfCompanyExists(CompanyTO companyTO) {
+        CompanyEntity companyEntity = companyRepository.findOne(companyTO.getNip());
+        if(companyEntity != null && companyEntity.getNip().equals(companyTO.getNip())){
+            return CompanyMapper.mapCompanyToTO(companyEntity);
+        }
+        else
+        {
+            CompanyTO empty = new CompanyTO();
+            empty.setNip(0L);
+            return empty;
+        }
     }
 }

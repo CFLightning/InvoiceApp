@@ -11,7 +11,7 @@ public final class CompanyMapper {
 
     public static CompanyTO mapCompanyToTO(CompanyEntity companyEntity) {
         CompanyTO companyTO = new CompanyTO();
-        companyTO.setNIP(companyEntity.getNIP());
+        companyTO.setNip(companyEntity.getNip());
         companyTO.setName(companyEntity.getName());
         companyTO.setAddress(companyEntity.getAddress());
         companyTO.setPostalCode(companyEntity.getPostalCode());
@@ -22,7 +22,7 @@ public final class CompanyMapper {
 
     public static CompanyEntity mapCompanyToEntity(CompanyTO companyTO) {
         CompanyEntity companyEntity = new CompanyEntity();
-        companyEntity.setNIP(companyTO.getNIP());
+        companyEntity.setNip(companyTO.getNip());
         companyEntity.setName(companyTO.getName());
         companyEntity.setAddress(companyTO.getAddress());
         companyEntity.setPostalCode(companyTO.getPostalCode());

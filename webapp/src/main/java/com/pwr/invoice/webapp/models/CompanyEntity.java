@@ -1,14 +1,13 @@
 package com.pwr.invoice.webapp.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class CompanyEntity {
 
     @Id
-    private Long NIP;
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long nip;
     @Column
     private String name;
     @Column
@@ -18,14 +17,25 @@ public class CompanyEntity {
     @Column
     private String city;
     @Column
-    private Long bankAccount;
+    private String bankAccount;
 
-    public Long getNIP() {
-        return NIP;
+    public CompanyEntity(Long nip, String name, String address, String postalCode, String city, String bankAccount){
+        this.nip = nip;
+        this.name = name;
+        this.address = address;
+        this.postalCode = postalCode;
+        this.city = city;
+        this.bankAccount = bankAccount;
     }
 
-    public void setNIP(Long NIP) {
-        this.NIP = NIP;
+    public CompanyEntity() {}
+
+    public Long getNip() {
+        return nip;
+    }
+
+    public void setNip(Long nip) {
+        this.nip = nip;
     }
 
     public String getName() {
@@ -60,11 +70,11 @@ public class CompanyEntity {
         this.city = city;
     }
 
-    public Long getBankAccount() {
+    public String getBankAccount() {
         return bankAccount;
     }
 
-    public void setBankAccount(Long bankAccount) {
+    public void setBankAccount(String bankAccount) {
         this.bankAccount = bankAccount;
     }
 }

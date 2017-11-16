@@ -1,0 +1,19 @@
+<section class="container-fluid">
+  <section>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Nazwa</th>
+        <th>Stawka VAT</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let vatGroup of currentGroups">
+        <td>{{vatGroup.name}}</td>
+        <td>{{vatGroup.taxRate}}%</td>
+        <td style="width:50px"></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</section>

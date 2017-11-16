@@ -1,0 +1,42 @@
+<!--<div class="col-md-6 col-md-offset-3">-->
+  <!--<form name="form" (ngSubmit)="f.form.valid && createVatGroup()" #f="ngForm" novalidate>-->
+    <!--<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !name.valid }">-->
+      <!--<label for="name">Nazwa grupy</label>-->
+      <!--<input type="text" class="form-control" name="name" [(ngModel)]="model.name" #name="ngModel" required />-->
+      <!--<div *ngIf="f.submitted && !name.valid" class="help-block">Nazwa grupy jest wymagana</div>-->
+    <!--</div>-->
+    <!--<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !taxRate.valid }">-->
+      <!--<label for="taxRate">Stawka VAT</label>-->
+      <!--<input type="number" class="form-control" name="taxRate" [(ngModel)]="model.taxRate" #taxRate="ngModel" required />-->
+      <!--<div *ngIf="f.submitted && !taxRate.valid" class="help-block">Stawka VAT jest wymagana</div>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+      <!--<button [disabled]="loading" class="btn btn-primary">Zapisz grupę</button>-->
+      <!--<img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />-->
+    <!--</div>-->
+  <!--</form>-->
+<!--</div>-->
+<section class="container-fluid">
+  <section>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Login</th>
+        <th>Hasło</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let employee of currentEmployees">
+        <td>{{employee.name}}</td>
+        <td>{{employee.surname}}</td>
+        <td>{{employee.login}}</td>
+        <td>{{employee.password}}</td>
+        <td style="width:50px"></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</section>
+

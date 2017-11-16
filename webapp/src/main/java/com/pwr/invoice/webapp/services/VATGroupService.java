@@ -23,7 +23,8 @@ public class VATGroupService implements IVATGroupService {
     }
 
     @Override
-    public void insertOrModifyGroup(VATGroupTO vatGroupTO){
+    public VATGroupTO insertOrModifyGroup(VATGroupTO vatGroupTO){
         vatGroupRepository.save(VATGroupMapper.mapVATGroupToEntity(vatGroupTO));
+        return vatGroupTO;
     }
 }

@@ -6,7 +6,6 @@ import javax.persistence.*;
 public class InvoiceRowEntity {
 
     @Id
-    @GeneratedValue
     private Long rowNumber;
     @Column
     private String itemName;
