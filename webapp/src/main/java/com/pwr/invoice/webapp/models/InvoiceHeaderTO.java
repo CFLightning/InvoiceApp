@@ -15,7 +15,7 @@ public class InvoiceHeaderTO {
     private Long buyerNIP;
     private double nettoTotal;
     private double bruttoTotal;
-    private double VATTotal;
+    private double vatTotal;
     private UserEntity issuer;
     private List<InvoiceRowEntity> rows;
 
@@ -99,12 +99,12 @@ public class InvoiceHeaderTO {
         this.bruttoTotal = bruttoTotal;
     }
 
-    public double getVATTotal() {
-        return VATTotal;
+    public double getVatTotal() {
+        return vatTotal;
     }
 
-    public void setVATTotal(double VATTotal) {
-        this.VATTotal = VATTotal;
+    public void setVatTotal(double vatTotal) {
+        this.vatTotal = vatTotal;
     }
 
     public UserEntity getIssuer() {

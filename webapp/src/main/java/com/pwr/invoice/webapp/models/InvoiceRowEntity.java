@@ -6,6 +6,7 @@ import javax.persistence.*;
 public class InvoiceRowEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long rowNumber;
     @Column
     private String itemName;
@@ -21,6 +22,8 @@ public class InvoiceRowEntity {
     private double rowNettoTotal;
     @Column
     private double rowBruttoTotal;
+    @ManyToOne
+    private VATGroupEntity vatGroup;
 
     public Long getRowNumber() {
         return rowNumber;
@@ -84,5 +87,13 @@ public class InvoiceRowEntity {
 
     public void setRowBruttoTotal(double rowBruttoTotal) {
         this.rowBruttoTotal = rowBruttoTotal;
+    }
+
+    public VATGroupEntity getVatGroup() {
+        return vatGroup;
+    }
+
+    public void setVatGroup(VATGroupEntity vatGroup) {
+        this.vatGroup = vatGroup;
     }
 }

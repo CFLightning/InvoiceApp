@@ -22,7 +22,7 @@ public final class InvoiceHeaderMapper {
         invoiceHeaderTO.setBuyerNIP(invoiceHeaderEntity.getBuyerNIP());
         invoiceHeaderTO.setNettoTotal(invoiceHeaderEntity.getNettoTotal());
         invoiceHeaderTO.setBruttoTotal(invoiceHeaderEntity.getBruttoTotal());
-        invoiceHeaderTO.setVATTotal(invoiceHeaderEntity.getVATTotal());
+        invoiceHeaderTO.setVatTotal(invoiceHeaderEntity.getVatTotal());
         invoiceHeaderTO.setIssuer(invoiceHeaderEntity.getIssuer());
         invoiceHeaderTO.setRows(invoiceHeaderEntity.getRows());
         return  invoiceHeaderTO;
@@ -41,7 +41,7 @@ public final class InvoiceHeaderMapper {
         invoiceHeaderEntity.setBuyerNIP(invoiceHeaderTO.getBuyerNIP());
         invoiceHeaderEntity.setNettoTotal(invoiceHeaderTO.getNettoTotal());
         invoiceHeaderEntity.setBruttoTotal(invoiceHeaderTO.getBruttoTotal());
-        invoiceHeaderEntity.setVATTotal(invoiceHeaderTO.getVATTotal());
+        invoiceHeaderEntity.setVatTotal(invoiceHeaderTO.getVatTotal());
         invoiceHeaderEntity.setIssuer(invoiceHeaderTO.getIssuer());
         invoiceHeaderEntity.setRows(invoiceHeaderTO.getRows());
         return  invoiceHeaderEntity;

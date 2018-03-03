@@ -1,0 +1,28 @@
+<section class="container-fluid">
+  <section>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Nazwa</th>
+        <th>Cena Netto</th>
+        <th>Cena Brutto</th>
+        <th>Jedn. miary</th>
+        <th>Grupa VAT</th>
+        <th>Stawka VAT</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let merch of currentMerch">
+        <td>{{merch.name}}</td>
+        <td step ="0.01">{{merch.nettoPrice | number :'1.2'}} zl</td>
+        <td step ="0.01">{{merch.bruttoPrice | number :'1.2'}} zl</td>
+        <td>{{merch.unit}}</td>
+        <td>{{merch.vatGroup.name}}</td>
+        <td>{{merch.vatGroup.taxRate}}%</td>
+        <td style="width:50px"></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</section>
+

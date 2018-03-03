@@ -37,9 +37,17 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(this.model.username, this.model.password)
       .subscribe(
         data => {
-          this.router.navigate(['book-mgmt/books']);
-          this.nav.show();
           this.nav.setUser();
+          if(this.nav.sysAdmin){
+            this.router.navigate(['VGroups']);
+          }
+          else if(this.nav.compAdmin){
+            this.router.navigate(['Employees']);
+          }
+          else if(this.nav.bookKeeper){
+            this.router.navigate(['Invoices']);
+          }
+          this.nav.show();
         },
         error => {
           this.alertService.error("Username or password incorrect");

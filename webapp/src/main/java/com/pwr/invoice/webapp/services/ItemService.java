@@ -20,12 +20,15 @@ public class ItemService implements IItemService {
     @Override
     public List<ItemTO> findCompanyItems(CompanyTO companyTO){
         List<ItemTO> itemTOS = new ArrayList<>();
-        itemRepository.findAll().forEach(itemEntity -> ItemMapper.mapItemToTO(itemEntity));
-        return itemTOS.stream().filter(item -> item.getCompany().getNip() == companyTO.getNip()).collect(Collectors.toList());
+        itemRepository.findAll().forEach(itemEntity -> itemTOS.add(ItemMapper.mapItemToTO(itemEntity)));
+        return itemTOS.stream().filter(item -> item.getCompany().getNip().equals(companyTO.getNip())).collect(Collectors.toList());
     }
 
     @Override
     public void insertOrModifyItem(ItemTO itemTO) {
+        double brutto = itemTO.getNettoPrice() + (itemTO.getNettoPrice() * (itemTO.getVatGroup().getTaxRate() / 100));
+        double roundOff = Math.round(brutto * 100.0) / 100.0;
+        itemTO.setBruttoPrice(roundOff);
         itemRepository.save(ItemMapper.mapItemToEntity(itemTO));
     }
 }

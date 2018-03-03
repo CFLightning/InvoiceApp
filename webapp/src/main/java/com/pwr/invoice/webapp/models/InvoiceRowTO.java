@@ -10,6 +10,7 @@ public class InvoiceRowTO {
     private double itemAmount;
     private double rowNettoTotal;
     private double rowBruttoTotal;
+    private VATGroupEntity vatGroup;
 
     public Long getRowNumber() {
         return rowNumber;
@@ -73,5 +74,13 @@ public class InvoiceRowTO {
 
     public void setRowBruttoTotal(double rowBruttoTotal) {
         this.rowBruttoTotal = rowBruttoTotal;
+    }
+
+    public VATGroupEntity getVatGroup() {
+        return vatGroup;
+    }
+
+    public void setVatGroup(VATGroupEntity vatGroup) {
+        this.vatGroup = vatGroup;
     }
 }

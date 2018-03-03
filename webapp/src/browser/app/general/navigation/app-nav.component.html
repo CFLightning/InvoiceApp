@@ -12,7 +12,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent" [class.show]="!navCollapsed">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/login" (click)="this.auth.logout()"><h3>Logout</h3></a>
+        <a class="nav-link" routerLink="/login" (click)="this.auth.logout()"><h3>Wyloguj</h3></a>
       </li>
       <li class="nav-item" routerLinkActive="active" *ngIf="this.nav.sysAdmin">
         <a class="nav-link" routerLink="/VGroups"><h3>Grupy VAT</h3></a>
@@ -21,10 +21,19 @@
         <a class="nav-link" routerLink="/VGroup"><h3>Dodaj grupę VAT</h3></a>
       </li>
       <li class="nav-item" routerLinkActive="active" *ngIf="this.nav.compAdmin">
-        <a class="nav-link" routerLink="/book-mgmt/books"><h3>Book Overview</h3></a>
+        <a class="nav-link" routerLink="/Employees"><h3>Pracownicy</h3></a>
       </li>
-      <li class="nav-item" routerLinkActive="active" *ngIf="this.nav.compAdmin">
-        <a class="nav-link" routerLink="/book-mgmt/book"><h3>New Book</h3></a>
+      <li class="nav-item" routerLinkActive="active" *ngIf="this.nav.bookKeeper">
+        <a class="nav-link" routerLink="/Merchandise"><h3>Towary i usługi</h3></a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" *ngIf="this.nav.bookKeeper">
+        <a class="nav-link" routerLink="/AddMerch"><h3>Dodaj towar lub usługę</h3></a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" *ngIf="this.nav.bookKeeper">
+        <a class="nav-link" routerLink="/Invoices"><h3>Przeglądanie Faktur</h3></a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" *ngIf="this.nav.bookKeeper">
+        <a class="nav-link" routerLink="/Invoice"><h3>Dodaj fakturę</h3></a>
       </li>
     </ul>
   </div>

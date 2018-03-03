@@ -59,7 +59,7 @@ export class AddEmployeeComponent implements OnInit {
       .subscribe(
         data => {
           this.alertService.success('Rejestracja zakończona powodzeniem', true);
-          this.router.navigate(['login']);
+          this.currentEmployees = this.currentEmployees.concat(this.model);
         },
         error => {
           this.alertService.error(error);

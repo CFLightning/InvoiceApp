@@ -20,11 +20,14 @@ import {CompanyService} from "./_services/company.service";
 import {AdminModule} from "./admin-mgmt/admin.module";
 import {AdminService} from "./admin-mgmt/admin.service";
 import {CompAdminModule} from "./comp-admin-mgmt/comp-admin.module";
+import {BookKeeperService} from "./bookkeeper-mgmt/bookkeeper.service";
+import {BookKeeperModule} from "./bookkeeper-mgmt/bookkeeper.module";
+import {PdfmakeModule} from "ng-pdf-make";
 
 @NgModule({
-  imports: [BrowserModule, HttpModule, AdminModule, CompAdminModule, BookMgmtModule, GeneralModule, routing, NgbModule.forRoot(), FormsModule, ReactiveFormsModule],
+  imports: [BrowserModule, HttpModule, AdminModule, CompAdminModule, BookKeeperModule, BookMgmtModule, GeneralModule, routing, NgbModule.forRoot(), FormsModule, ReactiveFormsModule],
   declarations: [AppComponent, AlertComponent, LoginComponent, RegisterComponent],
-  providers: [AlertService, AdminService, AuthenticationService, CompanyService, UserService, NavbarService, AuthGuard],
+  providers: [AlertService, AdminService, AuthenticationService, CompanyService, UserService, NavbarService, AuthGuard, BookKeeperService],
   bootstrap: [AppComponent]
 } as NgModule)
 export class AppModule {

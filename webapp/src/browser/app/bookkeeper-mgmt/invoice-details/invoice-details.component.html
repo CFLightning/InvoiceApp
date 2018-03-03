@@ -1,0 +1,100 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h6>Nr faktury: {{currInv.invoiceNumber}}</h6>
+    <h6>Wystawiający: {{currInv.issuer.name}} {{currInv.issuer.surname}}</h6>
+    <h5><u>Sprzedający</u></h5>
+      <div>
+        <h6>Nazwa: {{currInv.company.name}}</h6>
+      </div>
+      <div>
+        <h6>NIP: {{currInv.company.nip}}</h6>
+      </div>
+      <div>
+        <h6>Adres: {{currInv.company.address}}, {{currInv.company.postalCode}} {{currInv.company.city}}</h6>
+      </div>
+  </div>
+  <div class="col-md-6 ">
+    <h6>Data wystawienia: {{currInv.issueDate}}</h6>
+    <h6>Data sprzedaży: {{currInv.issueDate}}</h6>
+    <h5><u>Kupujący</u></h5>
+    <div>
+      <h6>Nazwa: {{currInv.buyerName}}</h6>
+    </div>
+    <div>
+      <h6>NIP: {{currInv.buyerNIP}}</h6>
+    </div>
+    <div>
+      <h6>Adres: {{currInv.buyerAddress}}, {{currInv.buyerPostalCode}} {{currInv.buyerCity}}</h6>
+    </div>
+  </div>
+</div>
+<section class="container-fluid">
+  <section>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Nazwa</th>
+        <th>Cena Netto</th>
+        <th>Cena Brutto</th>
+        <th>Cena VAT</th>
+        <th>Jednostka</th>
+        <th>Ilość</th>
+        <th>Grupa VAT</th>
+        <th>Całość Netto</th>
+        <th>Całość Brutto</th>
+        <th>Całość VAT</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let row of currInv.rows">
+        <td>{{row.itemName}}</td>
+        <td>{{row.nettoItemPrice}} zl</td>
+        <td>{{row.bruttoItemPrice}} zl</td>
+        <td step="0.01">{{(row.nettoItemPrice * (row.vatGroup.taxRate /100)) | number :'1.2'}} zl</td>
+        <td>{{row.itemUnit}}</td>
+        <td>{{row.itemAmount}}</td>
+        <td>{{row.vatGroup.name}}</td>
+        <td>{{row.rowNettoTotal | number :'1.2'}} zl</td>
+        <td>{{row.rowBruttoTotal | number :'1.2'}} zl</td>
+        <td>{{(row.rowNettoTotal * (row.vatGroup.taxRate / 100)) | number :'1.2'}} zl</td>
+        <td style="width:50px"></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</section>
+<div class="col-md-6 col-md-offset-3">
+  <section class="container-fluid">
+    <section>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Stawka</th>
+          <th>Kwota Netto</th>
+          <th>Kwota VAT</th>
+          <th>Kwota Brutto</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let sum of summaries">
+          <td>{{sum.sumTaxRate}} %</td>
+          <td>{{sum.sumNetto | number :'1.2'}} zl</td>
+          <td>{{sum.sumVat | number :'1.2'}} zl</td>
+          <td>{{sum.sumBrutto | number :'1.2'}} zl</td>
+        </tr>
+        </tbody>
+        <thead>
+        <tr>
+          <th>SUMA</th>
+          <th>{{currInv.nettoTotal | number :'1.2'}} zl </th>
+          <th>{{currInv.vatTotal | number :'1.2'}} zl</th>
+          <th>{{currInv.bruttoTotal | number :'1.2'}} zl</th>
+        </tr>
+        </thead>
+      </table>
+    </section>
+  </section>
+  <h6>Nr konta: {{currInv.company.bankAccount}}</h6>
+  <button class="btn btn-primary"(click)="downloadPdf()">Download PDF</button>
+</div>
+

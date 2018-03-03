@@ -1,0 +1,27 @@
+<section class="container-fluid">
+  <section>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Nr. faktury</th>
+        <th>Kupujący</th>
+        <th>Całość netto</th>
+        <th>Całość brutto</th>
+        <th>Całość VAT</th>
+        <th>Detale</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let invoice of invoices">
+        <td>{{invoice.invoiceNumber}}</td>
+        <td>{{invoice.buyerName}}</td>
+        <td>{{invoice.nettoTotal}} zl</td>
+        <td>{{invoice.bruttoTotal}} zl</td>
+        <td>{{invoice.vatTotal}} zl</td>
+        <button style="height:50px" (click)="invoiceDetails(invoice)" class="btn btn-link">Detale faktury</button>
+        <td style="width:50px"></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</section>

@@ -1,0 +1,144 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <form name="form" (ngSubmit)="f.form.valid && createInvoice()" #f="ngForm" novalidate>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !name.valid }">
+        <label for="buyerName">Nazwa kupującego</label>
+        <input type="text" class="form-control" name="buyerName" [(ngModel)]="model.buyerName" #buyerName="ngModel" required />
+        <div *ngIf="f.submitted && !buyerName.valid" class="help-block">Nazwa jest wymagana</div>
+      </div>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !buyerNIP.valid }">
+        <label for="buyerNIP">NIP kupującego</label>
+        <input type="number" class="form-control" name="buyerNIP" [(ngModel)]="model.buyerNIP" #buyerNIP="ngModel" required />
+        <div *ngIf="f.submitted && !buyerNIP.valid" class="help-block">NIP kupującego jest wymagany</div>
+      </div>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !issueDate.valid }">
+        <label for="issueDate">Data wystawienia</label>
+        <input type="date" class="form-control" name="issueDatee" [(ngModel)]="model.issueDate" #issueDate="ngModel" required />
+        <div *ngIf="f.submitted && !issueDate.valid" class="help-block">Data wystawienia jest wymagana</div>
+      </div>
+
+    </form>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !buyerAddress.valid }">
+      <label for="buyerAddress">Ulica i nr domu kupującego</label>
+      <input type="text" class="form-control" name="buyerAddress" [(ngModel)]="model.buyerAddress" #buyerAddress="ngModel" required />
+      <div *ngIf="f.submitted && !buyerAddress.valid" class="help-block">Adres jest wymagany</div>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !buyerPostalCode.valid }">
+      <label for="buyerPostalCode">Kod pocztowy kupującego</label>
+      <input type="text" class="form-control" name="buyerPostalCode" [(ngModel)]="model.buyerPostalCode" #buyerPostalCode="ngModel" required />
+      <div *ngIf="f.submitted && !buyerPostalCode.valid" class="help-block">Kod pocztowy jest wymagany</div>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !buyerCity.valid }">
+      <label for="buyerCity">Miasto kupującego</label>
+      <input type="text" class="form-control" name="buyerCity" [(ngModel)]="model.buyerCity" #buyerCity="ngModel" required />
+      <div *ngIf="f.submitted && !buyerCity.valid" class="help-block">Miasto jest wymagane</div>
+    </div>
+  </div>
+</div>
+<form name="formRow" (ngSubmit)="fr.form.valid && addRow()" #fr="ngForm" novalidate>
+  <div class="row">
+    <div class="col-md-2 col-md-offset-3">
+      <div class="form-group" [ngClass]="{ 'has-error': fr.submitted && !itemName.valid }">
+        <label for="itemName">Nazwa towaru/usługi</label>
+        <input type="text" class="form-control" name="itemName" [(ngModel)]="row.itemName" #itemName="ngModel" required />
+        <div *ngIf="fr.submitted && !itemName.valid" class="help-block">Nazwa jest wymagana</div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group" [ngClass]="{ 'has-error': fr.submitted && !nettoItemPrice.valid }">
+        <label for="nettoItemPrice">Cena jedn. netto</label>
+        <input type="number" class="form-control" name="nettoItemPrice" [(ngModel)]="row.nettoItemPrice" #nettoItemPrice="ngModel" required />
+        <div *ngIf="fr.submitted && !nettoItemPrice.valid" class="help-block">Cena jest wymagana</div>
+      </div>
+    </div>
+    <div class="form-group col-md-2" [ngClass]="{ 'has-error': fr.submitted && !itemUnit.valid }">
+      <label for="itemUnit">Jednostka</label>
+      <select type="text" class="form-control" name="itemUnit" [(ngModel)]="row.itemUnit" #itemUnit="ngModel" required>
+        <option>Kilogram</option>
+        <option>Sztuka</option>
+        <option>Gram</option>
+        <option>Usługa</option>
+        <option>Subskrypcja</option>
+      </select>
+      <div *ngIf="fr.submitted && !itemUnit.valid" class="help-block">Jednostka jest wymagana</div>
+    </div>
+    <div class="form-group col-md-2" [ngClass]="{ 'has-error': f.submitted && !vatGroup.valid }">
+      <label for="vatGroup">Grupa VAT</label>
+      <select type="text" class="form-control" name="vatGroup" [(ngModel)]="row.vatGroup" #vatGroup="ngModel" required>
+        <option *ngFor="let vatGroup of vatGroups" [ngValue]="vatGroup">{{vatGroup.name}}, {{vatGroup.taxRate}}%</option>
+      </select>
+      <div *ngIf="f.submitted && !vatGroup.valid" class="help-block">Grupa VAT jest wymagana</div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group" [ngClass]="{ 'has-error': fr.submitted && !itemAmount.valid }">
+        <label for="itemAmount">Ilość</label>
+        <input type="number" class="form-control" name="itemAmount" [(ngModel)]="row.itemAmount" #itemAmount="ngModel" required />
+        <div *ngIf="fr.submitted && !itemAmount.valid" class="help-block">Ilość jest wymagana</div>
+      </div>
+    </div>
+    <div class="form-group col-md-2">
+      <label style="height: 47px"> </label>
+      <button style="height: 36px" class="btn btn-primary">Zapisz wiersz</button>
+    </div>
+  </div>
+</form>
+<div class="row">
+  <div class="col-md-6">
+    <label for="item">Dodaj wcześniej zdefiniowany towar</label>
+    <select type="text" class="form-control" name="item" [(ngModel)]="defItemModel.merch">
+      <option *ngFor="let merch of defItems" [ngValue]="merch">{{merch.name}}  -  {{merch.nettoPrice}}zl/netto, {{merch.unit}}, {{merch.vatGroup.taxRate}}% VAT</option>
+    </select>
+  </div>
+  <div class="col-md-2">
+    <div class="form-group">
+      <label for="defItemAmount">Ilość</label>
+      <input type="number" class="form-control" name="defItemAmount" [(ngModel)]="defItemModel.amount">
+    </div>
+  </div>
+  <div class="form-group col-md-4">
+    <label style="height: 47px"> </label>
+    <button style="height: 36px" name="addmerch"(click)="addDefinedMerch()" class="btn btn-primary">Dodaj do wierszy</button>
+  </div>
+</div>
+
+
+<section class="container-fluid">
+  <section>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Nazwa</th>
+        <th>Cena Netto</th>
+        <th>Cena Brutto</th>
+        <th>Jedn. miary</th>
+        <th>Ilość</th>
+        <th>Grupa VAT</th>
+        <th>Całość netto</th>
+        <th>Całość brutto</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let row of rows">
+        <td>{{row.itemName}}</td>
+        <td step ="0.01">{{row.nettoItemPrice}} zl</td>
+        <td step ="0.01">{{row.bruttoItemPrice}} zl</td>
+        <td>{{row.itemUnit}}</td>
+        <td>{{row.itemAmount}}</td>
+        <td>{{row.vatGroup.name}}</td>
+        <td step ="0.01">{{row.rowNettoTotal}} zl</td>
+        <td step ="0.01">{{row.rowBruttoTotal}} zl</td>
+        <td style="width:50px"></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</section>
+<div class="form-group">
+  <button [disabled]="loading" (click)="createInvoice()" class="btn btn-primary">Zapisz</button>
+  <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+</div>
+
+
+
